@@ -1,7 +1,8 @@
 <!DOCTYPE html>
- <!-- #cad8bf cores das letras
+<!-- #cad8bf cores das letras
             #7aa087
             #356351-->
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,13 +12,43 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <title>My Resume</title>
+
+    <style>
+        .imgAni {
+            animation-name: aniZoom;
+            animation-duration: 6s;
+        }
+
+
+        @keyframes aniZoom {
+            0% {
+                max-width: 250px;
+            }
+
+            25% {
+                max-width: 275px;
+            }
+
+            50% {
+                max-width: 250px;
+            }
+
+            75% {
+                max-width: 275px;
+            }
+
+            100% {
+                max-width: 250px;
+            }
+        }
+    </style>
 </head>
 
 <body class="container" style="background-image: url('../Assets/Fundo.jpg'); background-size: cover;">
     <div class=" rounded-3 bg-dark text-bg-dark container-fluid shadow-lg mt-5">
-        <div class="row p-5 row align-items-md-stretch">
-            <div class="col-md-4 p-2">
-                <img src="../Assets/Perfil_portfolio.jpg" style="
+        <div class="row p-5 row align-items-md-stretch ">
+            <div class="col-md-4 p-2  ">
+                <img src="../Assets/Perfil_portfolio.jpg" class="imgAni" style="
             border-radius: 100%;
             border-style: outset;
             border-color: white;
@@ -25,8 +56,8 @@
           " class="shadow-lg img-fluid" />
             </div>
 
-            <div class="col-md-8 p-2" style="font-family: Georgia, serif;"> 
-                <h1 style="color:  #7aa087;">Who am i?</h1>
+            <div class="col-md-8 p-2 " style="font-family: Georgia, serif;">
+                <h1 style="color:  #7aa087; " class="">Who am I?</h1>
                 <h2 style="color: #608284">My resume</h2>
                 <hr />
                 <h3>Summary</h3>
@@ -46,7 +77,7 @@
     <div class="  rounded-3 bg-dark text-bg-dark container-fluid shadow-lg mt-5 ">
         <div class="row p-5 row align-items-md-stretch" style="font-family: Georgia, serif;">
             <h3>Education</h3>
-            <ul  class="mt-3" > 
+            <ul class="mt-3">
                 <li style="color: #cad8bf;">
                     Bachelor of Science, Computer Science - University of Beira Interior,
                     2016-2020
@@ -56,7 +87,8 @@
 
             <h3 class="mt-3">Work Experience</h3>
             <ul>
-                <li class="mt-3" style="color:  #fcfcfc; text-transform: uppercase; font-weight: bold;">Fullstack Developer - Pegasi,lda</li>
+                <li class="mt-3" style="color:  #fcfcfc; text-transform: uppercase; font-weight: bold;">Fullstack
+                    Developer - Pegasi,lda</li>
                 <p style="color:  #7aa087">June 2021- July 2023</p>
                 <ul class="mb-3" style="color: #cad8bf;">
                     <li>Developed web application with Angular and bootstrap5</li>
@@ -66,25 +98,27 @@
                     <li>Worked with restApi</li>
                 </ul>
 
-                <li style="color: #fcfcfc;  text-transform: uppercase; font-weight: bold;">FrontEnd Developer- Capgemini</li>
-                <p  style="color:  #7aa087">March 2021- May 2021</p>
-                <ul class="mb-3"  style="color: #cad8bf;">
-                    <li >
+                <li style="color: #fcfcfc;  text-transform: uppercase; font-weight: bold;">FrontEnd Developer- Capgemini
+                </li>
+                <p style="color:  #7aa087">March 2021- May 2021</p>
+                <ul class="mb-3" style="color: #cad8bf;">
+                    <li>
                         Working with Angular (typescript,html,css) developing an application
                         for a VW car
                     </li>
                     <li>Using Scrum Methodologies</li>
                 </ul>
-                <li style="color:  #fcfcfc;  text-transform: uppercase; font-weight: bold;">Enrollment campaign promoter - Santander Totta Talenter</li>
-                <p  style="color:  #7aa087">Setember 2019- Setember 2019</p>
-                <ul  style="color: #cad8bf;">
+                <li style="color:  #fcfcfc;  text-transform: uppercase; font-weight: bold;">Enrollment campaign promoter
+                    - Santander Totta Talenter</li>
+                <p style="color:  #7aa087">Setember 2019- Setember 2019</p>
+                <ul style="color: #cad8bf;">
                     <li>Working with costumer service</li>
                 </ul>
             </ul>
             <hr />
             <br />
-            <h3  class="mt-3" >Skills</h3>
-            <ul class="mt-3" style="color:  #cad8bf;" >
+            <h3 class="mt-3">Skills</h3>
+            <ul class="mt-3" style="color:  #cad8bf;">
                 <li class="mb-1">Angular:⭐️⭐️⭐️</li>
                 <li class="mb-1">Python:⭐️⭐️⭐️</li>
                 <li class="mb-1">Java:⭐️⭐️⭐️</li>
@@ -97,12 +131,13 @@
             </ul>
             <hr />
             <br />
-          
-            <h3  class="mt-3" >Awards and Certifications</h3>
-            <ul  class="mt-3">
-                <li  style="color:  #cad8bf;">
+
+            <h3 class="mt-3">Awards and Certifications</h3>
+            <ul class="mt-3">
+                <li style="color:  #cad8bf;">
                     Scrum Master Certification 2024 + Agile Scrum Certification -
-                    <a target="_blank" class="link-light" href="https://www.udemy.com/course/scrum-certification/">Udemy Course</a>
+                    <a target="_blank" class="link-light" href="https://www.udemy.com/course/scrum-certification/">Udemy
+                        Course</a>
                 </li>
             </ul>
         </div>
@@ -110,7 +145,7 @@
 </body>
 
 <footer class="mt-4 mb-4">
-    <div class=" rounded-3 bg-dark text-bg-dark container-fluid shadow-lg p-3 d-flex justify-content-center" >
+    <div class=" rounded-3 bg-dark text-bg-dark container-fluid shadow-lg p-3 d-flex justify-content-center">
         <p style="color:  #7aa087">© 2024 Ana Delgado. All rights reserved. <br>
             Background picture by <a target="_blank" class="link-light"
                 href="https://unsplash.com/pt-br/fotografias/foto-de-baixa-luminosidade-de-gotas-de-agua-na-folha-_7ijJz9nZmY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash">
