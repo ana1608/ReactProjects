@@ -32,7 +32,7 @@
 }
 
 body{
-    background-image: url('../Assets/Fundo.jpg'); 
+    background-image: url('./Assets/Fundo.jpg'); 
     background-size: cover;
 }
 
