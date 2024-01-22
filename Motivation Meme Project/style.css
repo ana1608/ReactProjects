@@ -4,7 +4,19 @@ html{
 
 img{
     border: 5px solid white;   
-    width: 75%;
+    width: 80%;
+}
+
+
+figcaption{
+    color: grey;
+    font-size: 10px;
+    margin-bottom: 2px;
+   
+}
+
+a{
+    color: grey;
 }
 
 h1{
