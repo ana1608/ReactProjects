@@ -1,5 +1,3 @@
-import "./Signup-css.css";
-
 function Signup() {
   return (
     <div className="container d-flex justify-content-center align-items-center 100-w vh-100 ">
@@ -16,7 +14,7 @@ function Signup() {
               id="floatingNome"
               placeholder="Nome"
             />
-            <label htmlFor="floatingNome">Nome</label>
+            <label htmlFor="floatingNome">Nome Completo</label>
           </div>
           <div className="form-floating mb-3 mt-3">
             <input
