@@ -20,17 +20,6 @@ function App() {
     console.log(users);
   }
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const pool = new sql.ConnectionPool(config);
-      const request = pool.request();
-      const result = await request.query("SELECT * FROM user");
-      console.log(result);
-      setUsers(result.recordset);
-    }
-
-    fetchUsers();
-  }, []);
   /* const routeChange = (path) => {
     navigate(path);
   };*/
