@@ -4,11 +4,14 @@ import Home from "./home/Home";
 import GeraPalavra from "./home/GeraPalavra";
 import SobreTi from "./home/Sobreti";
 import React, { useState } from "react";
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 function App() {
   const [users, setUsers] = useState([]);
+  //let navigate = useNavigate();
+  //const fname = "ana";
+  // const pname = "baptista";
 
   function addUser(newUser) {
     setUsers((prevUsers) => {
@@ -17,16 +20,35 @@ function App() {
     console.log(users);
   }
 
+  useEffect(() => {
+    async function fetchUsers() {
+      const pool = new sql.ConnectionPool(config);
+      const request = pool.request();
+      const result = await request.query("SELECT * FROM user");
+      console.log(result);
+      setUsers(result.recordset);
+    }
+
+    fetchUsers();
+  }, []);
+  /* const routeChange = (path) => {
+    navigate(path);
+  };*/
+
+  function getUser(user) {
+    console.log(user);
+  }
+
   return (
     <div className="global">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />}></Route>
+          <Route path="/login" element={<Login onGetUser={getUser} />}></Route>
           <Route path="/home" element={<Home />} />
-          <Route path="Signup" element={<Signup onAddUser={addUser} />} />
-          <Route path="GeraPalavra" element={<GeraPalavra />} />
-          <Route path="SobreTi" element={<SobreTi />} />
-          <Route path="*" element={<Login />} />
+          <Route path="/signup" element={<Signup onAddUser={addUser} />} />
+          <Route path="/geraPalavra" element={<GeraPalavra />} />
+          <Route path="/sobreTi" element={<SobreTi />} />
+          <Route path="*" element={<Login onGetUser={getUser} />} />
         </Routes>
       </BrowserRouter>
     </div>

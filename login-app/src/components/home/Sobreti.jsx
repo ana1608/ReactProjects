@@ -1,15 +1,22 @@
 import React from "react";
 import { ImHeart } from "react-icons/im";
 import { ImArrowLeft2 } from "react-icons/im";
-
-
-
+import { useNavigate } from "react-router-dom";
 function Sobreti() {
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/home`;
+    navigate(path);
+  };
+
   return (
     <div className="container d-flex justify-content-center align-items-center 100-w vh-100 ">
       <div className=" rounded bg-light  shadow-lg">
         <div className="m-2">
-          <button className=" btn btn-light textoB text-start" type="submit">
+          <button
+            className=" btn btn-light textoB text-start"
+            onClick={routeChange}
+          >
             <ImArrowLeft2 />
           </button>
         </div>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-function Login() {
+function Login(props) {
   const [User, setUser] = useState({
+    nameC: "",
     email: "",
     password: "",
   });
@@ -24,13 +25,16 @@ function Login() {
     });
   }
 
-  function handlelogin(event) {}
+  function loginUser(event) {
+    props.onGetUser(User);
+    event.preventDefault();
+  }
 
   return (
     <div className="container d-flex justify-content-center align-items-center 100-w vh-100 ">
       <div className=" rounded bg-light  p-5 shadow-lg">
-        <form onSubmit={handlelogin}>
-          <h1>
+        <form>
+          <h1 className="">
             <strong>Login </strong>
           </h1>
           <h2>Faça login para entrar </h2>
@@ -58,12 +62,16 @@ function Login() {
           </div>
 
           <div>
-            <button className=" btn btn-primary w-100 py-2" type="submit">
+            <button
+              className=" btn btn-primary w-100 py-2"
+              type="submit"
+              onClick={loginUser}
+            >
               Entrar
             </button>
           </div>
           <p className=" mt-3">
-            Ainda não tem conta? <a href="/SignUp"> Registe-se aqui!</a>
+            Ainda não tem conta? <a href="/signUp"> Registe-se aqui!</a>
           </p>
         </form>
       </div>

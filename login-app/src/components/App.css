@@ -1,26 +1,24 @@
-.global{
+.global {
   background-color: #74b54e;
 }
 
-h1{
+h1 {
   font-size: 25px;
-  color: #2685BF;
-
+  color: #2685bf;
 }
 
-h2{
+h2 {
   font-size: 15px;
   color: #7eb7db;
 }
-.textoB{
-  color: #2685BF;
-  }
-
-.login{
-  background-color: 
-  #78C1F3;
+.textoB {
+  color: #2685bf;
 }
 
-.buttonSubmit{
-  background-color: #A2BF39;
+.login {
+  background-color: #78c1f3;
+}
+
+.buttonSubmit {
+  background-color: #a2bf39;
 }
