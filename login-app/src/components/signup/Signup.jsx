@@ -82,7 +82,7 @@ function Signup(props) {
       },
       body: JSON.stringify(User),
     }).then((res) => res.text());
-    //console.log(newData);
+    console.log(newData);
   };
 
   const handleSubmit = (e) => {

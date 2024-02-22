@@ -28,7 +28,7 @@ const getUserbyEmail= async(user)=>{
     try{
      
         let pool =await sql.connect(config);
-        let users= await pool.request().query(`SELECT * from Users WHERE Email = ${user.email}`);
+        let users= await pool.request().query(`SELECT * from Users WHERE Email = '${user.email}'`);
         console.log(users);
         return users;
     }catch(error){
@@ -39,7 +39,7 @@ const getUserbyEmail= async(user)=>{
 const getUserbyid= async(user)=>{
     try{
         let pool =await sql.connect(config);
-        let users= await pool.request().query(`SELECT * from Users WHERE id = ${user.id}`);
+        let users= await pool.request().query(`SELECT * from Users WHERE id = '${user.id}'`);
         console.log(users);
         return users;
     }catch(error){
@@ -50,7 +50,7 @@ const getUserbyid= async(user)=>{
 const getUserbyemailandpass= async(user)=>{
     try{
         let pool =await sql.connect(config);
-        let users= await pool.request().query(`SELECT * from Users WHERE email = ${user.email} AND senha = ${user.password}`);
+        let users= await pool.request().query(`SELECT * from Users WHERE email = '${user.email}' AND senha = '${user.password}'`);
         console.log(users);
         return users;
     }catch(error){
