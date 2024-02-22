@@ -61,16 +61,36 @@ function Signup(props) {
     return isValid;
   };
 
-  function SignUpUser() {
-    props.onAddUser(User);
-  }
+  const fetchData = async () => {
+    const newData = await fetch("/apiadd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(User),
+    }).then((res) => res.text());
+    //  console.log(newData)
+  };
+
+  const fetchEmail = async () => {
+    const newData = await fetch("/apiemail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(User),
+    }).then((res) => res.text());
+    //console.log(newData);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      SignUpUser();
-      console.log("User:", User);
+      fetchEmail();
+      // fetchData();
       // Set a submitted flag
     } else {
       // Form is not valid, display error messages

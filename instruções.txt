@@ -1,0 +1,29 @@
+Criar BD no sql management studio com o nome LoginProject
+------------------------------------------------------
+Criar esta query dentro da BD
+
+CREATE TABLE Users (
+    Userid int IDENTITY(1,1) PRIMARY KEY,
+    Nome varchar(MAX) NOT NULL,
+    Email varchar(MAX) NOT NULL,
+    Senha varchar(MAX) NOT NULL
+);
+-----------------------------------------------
+Ir a security->login-> e criar outro login com sql server authentication
+Userlogin
+1234
+Clicar botao direito no login criado -> user mapping -> selecionar bd criada anteriormente e selecionar db onwer
+-----------------------------------------------
+Verificar se protocolo tpc esta ativo e ativar se necessário
+
+compmgmt.msc ou gestão de computadores -> serviços e aplicações -> 
+sql server configuration manager-> sql server network configuration -> verificar tcp ligado caso contrário ligar.
+
+Verificar a porta tcp 
+
+tcp -> propriedades ->ip adress -> tcp all 
+------------------------------------------
+Reiniciar processos caso necessário (facultativo caso tcp esteja ativo e tenha uma porta)
+
+serviços -> sql server express -> reiniciar
+
