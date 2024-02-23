@@ -31,3 +31,12 @@ serviços -> sql server express -> reiniciar
 ------------------------------------------------------
 7. npm run dev - para iniciar
 ------------------------------------------------------
+8. Instalações que fiz
+
+bootstrap5.2.3
+react-icons
+mssql
+nodemon
+cors
+bcryptjs
+
