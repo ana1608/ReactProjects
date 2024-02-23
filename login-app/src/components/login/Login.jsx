@@ -27,7 +27,7 @@ function Login(props) {
   }
 
   const fetchLogin = async () => {
-    const newData = await fetch("/apilogin", {
+    const newData = await fetch("/apiemail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
