@@ -68,6 +68,7 @@ function Signup() {
 
   const fetchData = async () => {
     try {
+      // eslint-disable-next-line
       const newData = await fetch("/apiadd", {
         method: "POST",
         headers: {
