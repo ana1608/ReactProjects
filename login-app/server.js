@@ -23,7 +23,10 @@ app.post('/apiemail',async (req,res) => {
 });
 
    
-
+app.post('/apilogin',async (req,res) => {
+    const result = await dbOperation.getUserbyemailandpass(req.body);
+    res.send(result.recordset);
+});
 /**/
 
 app.listen(API_PORT,()=>console.log(`listening on port ${API_PORT}`));

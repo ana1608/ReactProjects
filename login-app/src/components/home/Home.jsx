@@ -16,6 +16,7 @@ function Home() {
   }
 
   function routeChangeOut() {
+    localStorage.clear();
     let path = `/login`;
     routeChange(path);
   }

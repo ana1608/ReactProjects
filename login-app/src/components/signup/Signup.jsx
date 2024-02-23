@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 function Signup(props) {
   const [User, setUser] = useState({
     nameC: "",
     email: "",
     password: "",
   });
+
+  let navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -45,13 +48,13 @@ function Signup(props) {
       isValid = false;
     }
 
-    // Validate email
+    // Validar email
     if (!User.email) {
       newErrors.email = "O email é obrigatório";
       isValid = false;
     }
 
-    // Validate password
+    // Validar password
     if (!User.password) {
       newErrors.password = "A password é obrigatória";
       isValid = false;
@@ -70,7 +73,9 @@ function Signup(props) {
       },
       body: JSON.stringify(User),
     }).then((res) => res.text());
-    //  console.log(newData)
+    alert("Utilizador registado com sucesso!");
+    console.log(newData);
+    navigate(`/login`);
   };
 
   const fetchEmail = async () => {
@@ -82,6 +87,12 @@ function Signup(props) {
       },
       body: JSON.stringify(User),
     }).then((res) => res.text());
+    console.log(newData.length);
+    if (newData.length > 2) {
+      alert("Esse utilizador já existe! Faça login ou utilize outro email!");
+    } else {
+      fetchData();
+    }
     console.log(newData);
   };
 
@@ -90,10 +101,8 @@ function Signup(props) {
 
     if (validateForm()) {
       fetchEmail();
-      // fetchData();
-      // Set a submitted flag
     } else {
-      // Form is not valid, display error messages
+      alert("Por favor, verifique se inseriu os seus dados corretamente!");
     }
   };
 

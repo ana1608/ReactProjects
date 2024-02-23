@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Login(props) {
   const [User, setUser] = useState({
     nameC: "",
     email: "",
     password: "",
   });
+  let navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -25,9 +26,31 @@ function Login(props) {
     });
   }
 
+  const fetchLogin = async () => {
+    const newData = await fetch("/apilogin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(User),
+    }).then((res) => res.json());
+
+    if (newData.length > 0) {
+      localStorage.setItem("nome", newData[0].Nome);
+      navigate(`/home`);
+
+      //localStorage.setItem("login", "1");
+    } else {
+      alert("Dados de login incorretos. Tente outra vez!");
+    }
+    console.log(newData);
+  };
+
   function loginUser(event) {
-    props.onGetUser(User);
     event.preventDefault();
+    localStorage.clear();
+    fetchLogin();
   }
 
   return (

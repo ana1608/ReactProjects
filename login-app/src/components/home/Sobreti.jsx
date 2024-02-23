@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ImHeart } from "react-icons/im";
 import { ImArrowLeft2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 function Sobreti() {
   let navigate = useNavigate();
+  const [nome, setnome] = useState({
+    Fnome: "",
+    Pnome: "",
+  });
   const routeChange = () => {
     let path = `/home`;
     navigate(path);
   };
+
+  useEffect(() => {
+    var names = localStorage.getItem("nome");
+    var arrNames = names.split(/\s+/);
+
+    if (arrNames.length <= 2) {
+      let newname = { Fnome: arrNames[0], Pnome: arrNames[0] };
+      setnome(newname);
+    } else {
+      let newname = {
+        Fnome: arrNames[0],
+        Pnome: arrNames[arrNames.length - 2],
+      };
+      setnome(newname);
+    }
+  }, []);
 
   return (
     <div className="container d-flex justify-content-center align-items-center 100-w vh-100 ">
@@ -29,8 +49,8 @@ function Sobreti() {
             </h1>
 
             <div className="mt-4">
-              <p>O teu primeiro nome:</p>
-              <p>O teu penúltimo nome:</p>
+              <p>O teu primeiro nome: {nome.Fnome}</p>
+              <p>O teu penúltimo nome: {nome.Pnome}</p>
             </div>
           </form>
         </div>
