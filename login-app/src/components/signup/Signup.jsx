@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-function Signup(props) {
+
+function Signup() {
   const [User, setUser] = useState({
     nameC: "",
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    sessionStorage.setItem("session", false);
+  }, []);
 
   let navigate = useNavigate();
 
@@ -48,13 +52,11 @@ function Signup(props) {
       isValid = false;
     }
 
-    // Validar email
     if (!User.email) {
       newErrors.email = "O email é obrigatório";
       isValid = false;
     }
 
-    // Validar password
     if (!User.password) {
       newErrors.password = "A password é obrigatória";
       isValid = false;
@@ -65,35 +67,42 @@ function Signup(props) {
   };
 
   const fetchData = async () => {
-    const newData = await fetch("/apiadd", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(User),
-    }).then((res) => res.text());
-    alert("Utilizador registado com sucesso!");
-    console.log(newData);
-    navigate(`/login`);
+    try {
+      const newData = await fetch("/apiadd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(User),
+      }).then((res) => res.text());
+
+      alert("Utilizador registado com sucesso!");
+      navigate(`/login`);
+    } catch (error) {
+      alert("Utilizador não adicionado tente novamente!");
+    }
   };
 
   const fetchEmail = async () => {
-    const newData = await fetch("/apiemail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(User),
-    }).then((res) => res.text());
-    console.log(newData.length);
-    if (newData.length > 2) {
-      alert("Esse utilizador já existe! Faça login ou utilize outro email!");
-    } else {
-      fetchData();
+    try {
+      const newData = await fetch("/apiemail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(User),
+      }).then((res) => res.text());
+
+      if (newData.length > 2) {
+        alert("Esse utilizador já existe! Faça login ou utilize outro email!");
+      } else {
+        fetchData();
+      }
+    } catch (error) {
+      alert("Ocorreu um erro :( Por favor, tente novamente!");
     }
-    console.log(newData);
   };
 
   const handleSubmit = (e) => {

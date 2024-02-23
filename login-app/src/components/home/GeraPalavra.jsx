@@ -1,8 +1,14 @@
 import { ImArrowLeft2 } from "react-icons/im";
 import { ImCool } from "react-icons/im";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function Sobreti() {
+  useEffect(() => {
+    if (sessionStorage.getItem("session") === "false") {
+      setTimeout(() => navigate(`/login`));
+    }
+  });
+
   const [numero, setNumero] = useState(0);
   let navigate = useNavigate();
   const routeChange = () => {

@@ -8,26 +8,31 @@ function Sobreti() {
     Fnome: "",
     Pnome: "",
   });
+
   const routeChange = () => {
     let path = `/home`;
     navigate(path);
   };
 
   useEffect(() => {
-    var names = localStorage.getItem("nome");
-    var arrNames = names.split(/\s+/);
-
-    if (arrNames.length <= 2) {
-      let newname = { Fnome: arrNames[0], Pnome: arrNames[0] };
-      setnome(newname);
+    if (sessionStorage.getItem("session") === "false") {
+      setTimeout(() => navigate(`/login`));
     } else {
-      let newname = {
-        Fnome: arrNames[0],
-        Pnome: arrNames[arrNames.length - 2],
-      };
-      setnome(newname);
+      var names = sessionStorage.getItem("nome");
+      var arrNames = names.split(/\s+/);
+
+      if (arrNames.length <= 2) {
+        let newname = { Fnome: arrNames[0], Pnome: arrNames[0] };
+        setnome(newname);
+      } else {
+        let newname = {
+          Fnome: arrNames[0],
+          Pnome: arrNames[arrNames.length - 2],
+        };
+        setnome(newname);
+      }
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="container d-flex justify-content-center align-items-center 100-w vh-100 ">

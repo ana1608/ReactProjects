@@ -1,8 +1,14 @@
 import { ImHappy } from "react-icons/im";
 import { SlLogin } from "react-icons/sl";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 function Home() {
+  useEffect(() => {
+    if (sessionStorage.getItem("session") === "false") {
+      setTimeout(() => navigate(`/login`));
+    }
+  });
+
   let navigate = useNavigate();
 
   function routeChangeGP() {
@@ -16,7 +22,8 @@ function Home() {
   }
 
   function routeChangeOut() {
-    localStorage.clear();
+    sessionStorage.clear();
+    sessionStorage.setItem("session", false);
     let path = `/login`;
     routeChange(path);
   }

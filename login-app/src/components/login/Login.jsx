@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-function Login(props) {
+function Login() {
   const [User, setUser] = useState({
     nameC: "",
     email: "",
     password: "",
   });
   let navigate = useNavigate();
+
+  useEffect(() => {
+    sessionStorage.setItem("session", false);
+  }, []);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -27,29 +31,30 @@ function Login(props) {
   }
 
   const fetchLogin = async () => {
-    const newData = await fetch("/apiemail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(User),
-    }).then((res) => res.json());
+    try {
+      const newData = await fetch("/apiemail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(User),
+      }).then((res) => res.json());
 
-    if (newData.length > 0) {
-      localStorage.setItem("nome", newData[0].Nome);
-      navigate(`/home`);
-
-      //localStorage.setItem("login", "1");
-    } else {
-      alert("Dados de login incorretos. Tente outra vez!");
+      if (newData.length > 0) {
+        sessionStorage.setItem("nome", newData[0].Nome);
+        sessionStorage.setItem("session", true);
+        navigate(`/home`);
+      } else {
+        alert("Dados de login incorretos. Tente outra vez!");
+      }
+    } catch (error) {
+      alert("Ocorreu um erro :( Por favor, tente novamente!" + error);
     }
-    console.log(newData);
   };
 
   function loginUser(event) {
     event.preventDefault();
-    localStorage.clear();
     fetchLogin();
   }
 
