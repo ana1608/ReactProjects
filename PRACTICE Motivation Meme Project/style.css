@@ -1,0 +1,38 @@
+html{
+    background-color: black;
+}
+
+img{
+    border: 5px solid white;   
+    width: 80%;
+}
+
+
+figcaption{
+    color: grey;
+    font-size: 10px;
+    margin-bottom: 2px;
+   
+}
+
+a{
+    color: grey;
+}
+
+h1{
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+p{
+    color: white;
+}
+ 
+div{
+    margin-top: 100px;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    width: 50%;
+    margin-left: 25%;
+}
